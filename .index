@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CALMF - Brand Story</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-dark: #0f0f0f;
+      --color-cream: #f8f6f3;
+      --color-sage: #7a9a8a;
+      --color-gold: #c4a87c;
+      --color-text: #3d3d3d;
+      --color-muted: #8a8a8a;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Noto Sans KR', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      color: var(--color-text);
+      background: var(--color-cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(248, 246, 243, 0.9);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--color-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      width: 50vw;
+      height: 70vh;
+      right: 0;
+      top: 15%;
+      background: linear-gradient(160deg, #e8ebe8 0%, #d5ddd8 100%);
+      border-radius: 400px 0 0 400px;
+      opacity: 0.5;
+    }
+
+    .floating-element {
+      position: absolute;
+      font-size: 10rem;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .el-1 { top: 10%; left: 8%; }
+    .el-2 { top: 55%; right: 12%; font-size: 7rem; }
+    .el-3 { bottom: 8%; left: 25%; font-size: 6rem; }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--color-sage);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 5.5rem;
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      color: var(--color-dark);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 2;
+      max-width: 480px;
+      margin: 0 auto 4rem;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--color-muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--color-muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.6); opacity: 0.4; }
+    }
+
+    /* Philosophy Section */
+    .philosophy {
+      height: 100vh;
+      position: relative;
+      background: var(--color-cream);
+      overflow: hidden;
+    }
+
+    .philosophy-wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .philosophy-slide {
+      position: absolute;
+      text-align: center;
+      color: var(--color-dark);
+      padding: 2rem;
+      opacity: 0;
+    }
+
+    .philosophy-slide.active {
+      opacity: 1;
+    }
+
+    .philosophy-number {
+      font-family: var(--font-serif);
+      font-size: 12rem;
+      font-weight: 300;
+      color: var(--color-sage);
+      opacity: 0.1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .philosophy-title {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .philosophy-desc {
+      font-size: 1rem;
+      color: var(--color-muted);
+      max-width: 360px;
+      margin: 0 auto;
+      line-height: 2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .philosophy-progress {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      transition: all 0.4s;
+    }
+
+    .progress-dot.active {
+      background: var(--color-sage);
+      transform: scale(1.3);
+    }
+
+    /* ===== REDESIGNED SECTIONS START ===== */
+
+    /* Ingredients Section - Editorial Style */
+    .ingredients {
+      padding: 0;
+      background: var(--color-cream);
+      position: relative;
+    }
+
+    .ingredients-intro {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ingredients-intro-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 45%;
+      height: 100%;
+      background: var(--color-sage);
+      opacity: 0.15;
+    }
+
+    .ingredients-intro-content {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: center;
+    }
+
+    .ingredients-intro-left {
+      position: relative;
+    }
+
+    .ingredients-big-text {
+      font-family: var(--font-serif);
+      font-size: 10rem;
+      font-weight: 300;
+      color: var(--color-sage);
+      opacity: 0.15;
+      position: absolute;
+      top: -4rem;
+      left: -2rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .ingredients-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--color-sage);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .ingredients-title {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--color-dark);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .ingredients-title em {
+      font-style: italic;
+      color: var(--color-sage);
+    }
+
+    .ingredients-desc {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 2;
+      max-width: 400px;
+    }
+
+    .ingredients-intro-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .ingredient-preview {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: #fff;
+      border-radius: 100px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ingredient-preview::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0;
+      background: var(--color-sage);
+      opacity: 0.1;
+      transition: width 0.4s ease;
+    }
+
+    .ingredient-preview:hover::before {
+      width: 100%;
+    }
+
+    .ingredient-preview:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .ingredient-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--color-sage);
+      opacity: 0.5;
+      width: 50px;
+    }
+
+    .ingredient-info h4 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .ingredient-info span {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .ingredient-arrow {
+      margin-left: auto;
+      font-size: 1.5rem;
+      color: var(--color-sage);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .ingredient-preview:hover .ingredient-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Products Section - Horizontal Scroll */
+    .products {
+      background: #f0ede8;
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .products-header {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 5rem;
+    }
+
+    .products-header-left .products-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--color-sage);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .products-header-left .products-title {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--color-dark);
+    }
+
+    .products-header-left .products-title em {
+      font-style: italic;
+      color: var(--color-sage);
+    }
+
+    .products-header-right {
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      max-width: 300px;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .products-track {
+      display: flex;
+      gap: 2.5rem;
+      padding: 0 6rem;
+      cursor: grab;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .products-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .products-track:active {
+      cursor: grabbing;
+    }
+
+    .product-card {
+      flex-shrink: 0;
+      width: 320px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(122, 154, 138, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
+    }
+
+    .product-card:hover {
+      transform: translateY(-15px);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: var(--color-sage);
+      color: #fff;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-visual {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(145deg, rgba(122, 154, 138, 0.15), rgba(122, 154, 138, 0.05));
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-visual::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, var(--color-sage), transparent);
+      opacity: 0.15;
+      filter: blur(30px);
+    }
+
+    .product-icon {
+      font-size: 5rem;
+      position: relative;
+      z-index: 1;
+      filter: grayscale(30%);
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-tagline {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--color-sage);
+    }
+
+    /* Awards Section - Timeline Style */
+    .awards {
+      padding: 10rem 6rem;
+      background: var(--color-cream);
+      position: relative;
+    }
+
+    .awards-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .awards-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--color-sage);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .awards-title {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--color-dark);
+    }
+
+    .awards-timeline {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .awards-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--color-sage), transparent);
+      transform: translateX(-50%);
+    }
+
+    .award-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .award-item:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .award-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .award-content {
+      width: calc(50% - 4rem);
+      padding: 2.5rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+    }
+
+    .award-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .award-year {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--color-sage);
+      opacity: 0.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .award-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .award-org {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .award-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: var(--color-cream);
+      border: 3px solid var(--color-sage);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* CTA Section - Full Impact */
+    .cta {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--color-cream);
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .cta-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(122, 154, 138, 0.1);
+    }
+
+    .cta-circle-1 {
+      width: 40vw;
+      height: 40vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cta-circle-2 {
+      width: 60vw;
+      height: 60vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cta-circle-3 {
+      width: 80vw;
+      height: 80vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cta-glow {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, var(--color-sage), transparent);
+      opacity: 0.08;
+      filter: blur(80px);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem;
+    }
+
+    .cta-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--color-sage);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .cta-title {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--color-dark);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--color-sage);
+    }
+
+    .cta-desc {
+      font-size: 1rem;
+      color: var(--color-muted);
+      max-width: 450px;
+      margin: 0 auto 3rem;
+      line-height: 2;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      padding: 1.2rem 3rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn-primary {
+      background: var(--color-sage);
+      color: #fff;
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--color-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-btn-secondary {
+      border: 1px solid var(--color-dark);
+      color: var(--color-dark);
+    }
+
+    .cta-btn-secondary:hover {
+      background: var(--color-dark);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      padding: 5rem 6rem;
+      background: #e8e5e0;
+      color: var(--color-muted);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .footer-brand .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      max-width: 280px;
+    }
+
+    .footer-column h4 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--color-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-column a {
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: var(--color-dark);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 4rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+    }
+
+    /* Utility */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .fade-right {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">CALMF</div>
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Beauty</a>
+      <a href="#">Health</a>
+      <a href="#">Store</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-shape" data-parallax data-speed="0.2"></div>
+      <div class="floating-element el-1" data-parallax data-speed="0.15">🌿</div>
+      <div class="floating-element el-2" data-parallax data-speed="0.1">🍃</div>
+      <div class="floating-element el-3" data-parallax data-speed="0.08">🌱</div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-label fade-up">Brand Story</p>
+      <h1 class="hero-title fade-up">Calm Your Skin<br><em>Feel the Difference</em></h1>
+      <p class="hero-desc fade-up">
+        과학과 자연의 조화로 탄생한 CALMF<br>
+        진정한 피부 건강을 위한 프리미엄 솔루션을 제안합니다.
+      </p>
+      <div class="scroll-indicator fade-up">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section (Pin Scroll) -->
+  <section class="philosophy" id="philosophy-section">
+    <div class="philosophy-wrapper">
+      <div class="philosophy-slide" data-slide="0">
+        <div class="philosophy-number">01</div>
+        <h2 class="philosophy-title">Calm</h2>
+        <p class="philosophy-desc">자극 없이 부드럽게<br>피부 본연의 균형을 되찾습니다</p>
+      </div>
+      <div class="philosophy-slide" data-slide="1">
+        <div class="philosophy-number">02</div>
+        <h2 class="philosophy-title">Science</h2>
+        <p class="philosophy-desc">임상으로 검증된 성분과<br>기술력으로 효과를 입증합니다</p>
+      </div>
+      <div class="philosophy-slide" data-slide="2">
+        <div class="philosophy-number">03</div>
+        <h2 class="philosophy-title">Trust</h2>
+        <p class="philosophy-desc">투명한 성분 공개와<br>진정성 있는 브랜드 철학</p>
+      </div>
+    </div>
+    <div class="philosophy-progress">
+      <div class="progress-dot" data-dot="0"></div>
+      <div class="progress-dot" data-dot="1"></div>
+      <div class="progress-dot" data-dot="2"></div>
+    </div>
+  </section>
+
+  <!-- Ingredients Section - Editorial Style -->
+  <section class="ingredients">
+    <div class="ingredients-intro">
+      <div class="ingredients-intro-bg" data-parallax data-speed="0.1"></div>
+      <div class="ingredients-intro-content">
+        <div class="ingredients-intro-left">
+          <div class="ingredients-big-text" data-parallax data-speed="-0.05">04</div>
+          <p class="ingredients-label fade-up">Key Ingredients</p>
+          <h2 class="ingredients-title fade-up">자연에서 찾은<br><em>해답</em></h2>
+          <p class="ingredients-desc fade-up">
+            과학적으로 검증된 자연 유래 성분만을 선별하여,
+            피부에 진정한 변화를 선사합니다.
+          </p>
+        </div>
+        <div class="ingredients-intro-right">
+          <div class="ingredient-preview fade-right">
+            <span class="ingredient-num">01</span>
+            <div class="ingredient-info">
+              <h4>Centella Asiatica</h4>
+              <span>Soothing & Calming</span>
+            </div>
+            <span class="ingredient-arrow">→</span>
+          </div>
+          <div class="ingredient-preview fade-right">
+            <span class="ingredient-num">02</span>
+            <div class="ingredient-info">
+              <h4>Hyaluronic Acid</h4>
+              <span>Deep Hydration</span>
+            </div>
+            <span class="ingredient-arrow">→</span>
+          </div>
+          <div class="ingredient-preview fade-right">
+            <span class="ingredient-num">03</span>
+            <div class="ingredient-info">
+              <h4>Ceramide Complex</h4>
+              <span>Barrier Repair</span>
+            </div>
+            <span class="ingredient-arrow">→</span>
+          </div>
+          <div class="ingredient-preview fade-right">
+            <span class="ingredient-num">04</span>
+            <div class="ingredient-info">
+              <h4>Niacinamide</h4>
+              <span>Brightening Care</span>
+            </div>
+            <span class="ingredient-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Section - Timeline -->
+  <section class="awards">
+    <div class="awards-header">
+      <p class="awards-label fade-up">Our Journey</p>
+      <h2 class="awards-title fade-up">Brand Milestones</h2>
+    </div>
+    <div class="awards-timeline">
+      <div class="award-item">
+        <div class="award-content fade-left">
+          <p class="award-year">2024</p>
+          <h3 class="award-name">글로벌 확장</h3>
+          <p class="award-org">아시아 시장 진출 및 온라인 채널 확대</p>
+        </div>
+        <div class="award-dot"></div>
+      </div>
+      <div class="award-item">
+        <div class="award-content fade-right">
+          <p class="award-year">2023</p>
+          <h3 class="award-name">오프라인 매장 오픈</h3>
+          <p class="award-org">프리미엄 체험 공간 운영 시작</p>
+        </div>
+        <div class="award-dot"></div>
+      </div>
+      <div class="award-item">
+        <div class="award-content fade-left">
+          <p class="award-year">2022</p>
+          <h3 class="award-name">브랜드 론칭</h3>
+          <p class="award-org">CALMF 공식 출시, 첫 제품 라인업 발표</p>
+        </div>
+        <div class="award-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section - Full Impact -->
+  <section class="cta">
+    <div class="cta-bg">
+      <div class="cta-circle cta-circle-1"></div>
+      <div class="cta-circle cta-circle-2"></div>
+      <div class="cta-circle cta-circle-3"></div>
+      <div class="cta-glow"></div>
+    </div>
+    <div class="cta-content">
+      <p class="cta-label fade-up">Experience CALMF</p>
+      <h2 class="cta-title fade-up">진정한 <em>피부 케어</em>를<br>경험하세요</h2>
+      <p class="cta-desc fade-up">
+        CALMF와 함께 건강하고 아름다운 피부를 만들어가세요.<br>
+        지금 바로 시작하실 수 있습니다.
+      </p>
+      <div class="cta-buttons fade-up">
+        <a href="https://calmf.co.kr/" class="cta-btn cta-btn-primary">쇼핑하기</a>
+        <a href="#" class="cta-btn cta-btn-secondary">더 알아보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">CALMF</div>
+        <p>과학과 자연이 만나 탄생한 프리미엄 스킨케어 브랜드. 당신의 피부에 진정한 변화를 선사합니다.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Beauty</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Body</a></li>
+          <li><a href="#">Sets</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Brand Story</a></li>
+          <li><a href="#">Store</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 CALMF. All rights reserved.</p>
+      <p>calmf.co.kr</p>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Fade Up 애니메이션
+    gsap.utils.toArray('.fade-up').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // Fade Left 애니메이션
+    gsap.utils.toArray('.fade-left').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // Fade Right 애니메이션
+    gsap.utils.toArray('.fade-right').forEach((el, i) => {
+      gsap.to(el, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: i * 0.1,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // 2. 패럴랙스 효과
+    gsap.utils.toArray('[data-parallax]').forEach(el => {
+      const speed = parseFloat(el.dataset.speed) || 0.2;
+      gsap.to(el, {
+        y: () => window.innerHeight * speed,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el.closest('section') || el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5
+        }
+      });
+    });
+
+    // 3. Philosophy 핀 스크롤
+    const slides = gsap.utils.toArray('.philosophy-slide');
+    const dots = gsap.utils.toArray('.progress-dot');
+
+    slides[0].classList.add('active');
+    dots[0].classList.add('active');
+
+    const philosophyTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.philosophy',
+        pin: true,
+        start: 'top top',
+        end: '+=300%',
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          let activeIndex = Math.floor(progress * 3);
+          if (activeIndex > 2) activeIndex = 2;
+
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === activeIndex);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
+          });
+        }
+      }
+    });
+
+    slides.forEach((slide, i) => {
+      if (i === 0) {
+        gsap.set(slide, { opacity: 1, y: 0 });
+      } else {
+        gsap.set(slide, { opacity: 0, y: 50 });
+      }
+    });
+
+    philosophyTl
+      .to(slides[0], { opacity: 0, y: -50, duration: 0.5 }, 0.2)
+      .to(slides[1], { opacity: 1, y: 0, duration: 0.5 }, 0.3)
+      .to(slides[1], { opacity: 0, y: -50, duration: 0.5 }, 0.55)
+      .to(slides[2], { opacity: 1, y: 0, duration: 0.5 }, 0.65);
+
+    // 4. Awards 타임라인 점 애니메이션
+    gsap.utils.toArray('.award-dot').forEach((dot, i) => {
+      gsap.from(dot, {
+        scale: 0,
+        duration: 0.5,
+        ease: 'back.out(2)',
+        scrollTrigger: {
+          trigger: dot,
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        },
+        delay: i * 0.2
+      });
+    });
+
+    // 6. CTA 원형 배경 애니메이션
+    gsap.to('.cta-circle', {
+      rotation: 360,
+      duration: 60,
+      ease: 'none',
+      repeat: -1
+    });
+
+    gsap.to('.cta-glow', {
+      scale: 1.2,
+      opacity: 0.15,
+      duration: 3,
+      ease: 'power1.inOut',
+      yoyo: true,
+      repeat: -1
+    });
+
+    // 7. 네비게이션 스크롤 효과
+    ScrollTrigger.create({
+      start: 'top -100',
+      onUpdate: (self) => {
+        const nav = document.querySelector('nav');
+        if (self.direction === 1) {
+          nav.style.transform = 'translateY(-100%)';
+        } else {
+          nav.style.transform = 'translateY(0)';
+        }
+      }
+    });
+
+    // 8. 스크롤 인디케이터 숨기기
+    gsap.to('.scroll-indicator', {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: '+=200',
+        scrub: 1
+      }
+    });
+  </script>
+
+</body>
+</html>
